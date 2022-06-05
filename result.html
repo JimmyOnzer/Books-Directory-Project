@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fetch using MySQL and Node.js</title>
+</head>
+<body>
+    <div class="table-data">
+<h2>Display Data using Node.js & MySQL</h2>
+    <table border="1">
+        <tr>
+            <th>bookID</th>
+            <th>title</th>
+            <th>description</th>
+            <th>authorName</th>
+            <th>genre</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.title %></td>
+            <td><%=data.description %></td>
+            <td><%=data.authorName %></td>
+            <td><%=data.genre %></td>
+            <td><a href="/api/BookUpdate/<%=data.id%>">Edit</a></td>
+            <td><a href="/api/BookDelete/<%=data.id%>">Delete</a></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>
